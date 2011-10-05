@@ -1,11 +1,30 @@
 <?php
-
+/*
+ * Copyright (C) 2011 OPEN WIDE
+ * 
+ * This file is part of OWSimpleOperator.
+ *
+ * OWSimpleOperator is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Foobar is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
 include_once 'lib/ezutils/classes/ezfunctionhandler.php';
 
 class OWSimpleOperator
 {
     
     public $max_operator_parameter = 10;
+    public $operator_list;
     
 
     /*********************************************************************
@@ -244,19 +263,23 @@ class OWSimpleOperator
     
     function operatorList()
     {
-        $operator_list = array();
-        
-        // We will search the template operator in the eztemplateautoload.php
-        $eZTemplate = eZTemplate::instance();
-        foreach( $eZTemplate->Operators as $operator_definition )
+        if (!isset($this->operator_list))
         {
-            if ( is_array($operator_definition) && $operator_definition['class'] == get_class( $this ) )
+            $operator_list = array();
+            
+            // We will search the template operator in the eztemplateautoload.php
+            $eZTemplate = eZTemplate::instance();
+            foreach( $eZTemplate->Operators as $operator_definition )
             {
-                $operator_list = $operator_definition['operator_names'];
-                break;
+                if ( is_array($operator_definition) && $operator_definition['class'] == get_class( $this ) )
+                {
+                    $operator_list = $operator_definition['operator_names'];
+                    break;
+                }
             }
+            $this->operator_list = $operator_list;
         }
-        return $operator_list;
+        return $this->operator_list;
     }
 
     function namedParameterPerOperator()
