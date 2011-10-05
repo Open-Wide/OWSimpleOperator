@@ -50,9 +50,10 @@ Step 4 : Register your operator
 -------
 Register your operator in the eztemplateautoload.php file :
 
-    /extension/myextension/autoloads/mytemplateoperator.php
+    /extension/myextension/autoloads/eztemplateautoload.php
 
 The content of this file have to look like that :
+
     $eZTemplateOperatorArray = array(
          array(
             'script' => 'extension/owsimpleoperator/autoloads/exampleoperator.php',
