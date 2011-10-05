@@ -7,6 +7,8 @@ But sometimes you want to create some simples template operators, which don't ne
 
 In this case, you can use OWSimpleOperator. You will save time and you will have more readable and maintainable operators.
 
+This extension was made by [Open Wide](http://openwide.fr)
+
 
 Step 1 : Install
 -------
