@@ -94,4 +94,4 @@ Contraints
 -------
 If an operator argument is optional, you have to set the default value to null.
 
-If you want more than 10 arguments for yout operator, you have to override the $max_operator_parameter attribute.
+If you want more than 10 arguments for your operator, you have to override the $max_operator_parameter attribute.
