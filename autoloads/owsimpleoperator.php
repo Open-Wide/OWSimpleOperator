@@ -18,8 +18,6 @@
  * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-include_once 'lib/ezutils/classes/ezfunctionhandler.php';
-
 class OWSimpleOperator
 {
     
@@ -33,14 +31,14 @@ class OWSimpleOperator
     /*!
      * Checks if a string contains a specific element.
      */
-    function string_contains($hay, $needle)
+    protected function string_contains($hay, $needle)
     {
         return strpos($hay, $needle) !== false;
     }
     /*!
      * Checks if a string starts with a specific character/sequence.
      */
-    function string_startswith($hay, $needle)
+    protected function string_startswith($hay, $needle)
     {
         return substr($hay, 0, strlen($needle)) == $needle;
     }
@@ -52,7 +50,7 @@ class OWSimpleOperator
     /*!
      * Checks if an ezobject (or eznode) has an attribute.
      */
-    function ezattribute_has($ezobject, $attribute_name)
+    protected function ezattribute_has($ezobject, $attribute_name)
     {
         $attribute_value = $this->get_attribute($ezobject, $attribute_name);
         return ($attribute_value !== null);
@@ -60,7 +58,7 @@ class OWSimpleOperator
     /*!
      * Get an ezobject (or eznode) attribute content 
      */
-    function ezattribute_get($ezobject, $attribute_name)
+    protected function ezattribute_get($ezobject, $attribute_name)
     {
         $attribute_value = null;
         if ($this->is_ezobject_or_eznode($ezobject, 'get_attribute'))
@@ -82,7 +80,7 @@ class OWSimpleOperator
      * Checks if the variable is an ezobject or eznode
      * Log an error if the method name is passed as second parameter
      */
-    function is_ezobject_or_eznode($node, $method_name=false)
+    protected function is_ezobject_or_eznode($node, $method_name=false)
     {
         return $this->is_of_object_type($node, array('eZContentObject', 'eZContentObjectTreeNode'), $method_name);
     }
@@ -90,7 +88,7 @@ class OWSimpleOperator
      * Checks if the variable is an ezobject
      * Log an error if the method name is passed as second parameter
      */
-    function is_ezobject($object, $method_name=false)
+    protected function is_ezobject($object, $method_name=false)
     {
         return $this->is_of_object_type($object, 'eZContentObject', $method_name);
     }
@@ -98,7 +96,7 @@ class OWSimpleOperator
      * Checks if the variable is an eznode
      * Log an error if the method name is passed as second parameter
      */
-    function is_eznode($node, $method_name=false)
+    protected function is_eznode($node, $method_name=false)
     {
         return $this->is_of_object_type($node, 'eZContentObjectTreeNode', $method_name);
     }
@@ -107,7 +105,7 @@ class OWSimpleOperator
      * The specified type is passed as second parameter. It could be a string or an array.
      * Log an error if the method name is passed as third parameter
      */
-    function is_of_object_type($var, $classes, $method_name=false)
+    protected function is_of_object_type($var, $classes, $method_name=false)
     {
         $is = false;
         
@@ -222,7 +220,7 @@ class OWSimpleOperator
     /*********************************************************************
      KERNEL : OPERATORS LAUNCHER
      *********************************************************************/
-    function modify( $tpl, $operator_name, $operator_parameters, $root_namespace, $current_namespace, &$operator_value, $named_parameters )
+    public function modify( $tpl, $operator_name, $operator_parameters, $root_namespace, $current_namespace, &$operator_value, $named_parameters )
     {
         if ( method_exists( $this, $operator_name ))
         {
@@ -250,7 +248,7 @@ class OWSimpleOperator
     /*********************************************************************
      KERNEL : OPERATORS CONFIGURATION
      *********************************************************************/
-    function namedParameterList()
+    public function namedParameterList()
     {
         // Get the default definition of an operator
         $default_parameter_definition = array( 'type' => 'mixed', 'required' => false, 'default' => null );
@@ -261,7 +259,7 @@ class OWSimpleOperator
         return $operators_definition;
     }
     
-    function operatorList()
+    public function operatorList()
     {
         if (!isset($this->operator_list))
         {
@@ -282,7 +280,7 @@ class OWSimpleOperator
         return $this->operator_list;
     }
 
-    function namedParameterPerOperator()
+    public function namedParameterPerOperator()
     {
         return true;
     }
