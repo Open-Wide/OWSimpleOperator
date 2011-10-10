@@ -41,7 +41,7 @@ For example for a sum operator :
         /*!
          * Return the sum of two numbers
          */
-        function example_sum( $number1, $number2 )
+        public function example_sum( $number1, $number2 )
         {
             return ( $number1 + $number2 );
         }
