@@ -239,7 +239,7 @@ class OWSimpleOperator
         }
         else
         {
-            $this->output_error('modify', 'the method "'.$operator_name.'" doesn\'t exists.');
+            $this->output_error('modify', 'The method "'.$operator_name.'" doesn\'t exists.');
             $operator_value = null;
         }
     }
@@ -266,14 +266,55 @@ class OWSimpleOperator
             $operator_list = array();
             
             // We will search the template operator in the eztemplateautoload.php
-            $eZTemplate = eZTemplate::instance();
-            foreach( $eZTemplate->Operators as $operator_definition )
+            $class_name = get_class( $this );
+            $folder_path = OWEzpAutoloader::get_class_folder_path( $class_name );
+            if ( !empty( $folder_path ) )
             {
-                if ( is_array($operator_definition) && $operator_definition['class'] == get_class( $this ) )
+                $autoload_file = $folder_path . '/eztemplateautoload.php';
+                if ( file_exists( $autoload_file ) )
                 {
-                    $operator_list = $operator_definition['operator_names'];
-                    break;
+                    include( $autoload_file );
+                    if ( isset( $eZTemplateOperatorArray ) )
+                    {
+                        if ( is_array( $eZTemplateOperatorArray ) )
+                        {
+                            $found = false;
+                            foreach ( $eZTemplateOperatorArray as $operator_definition )
+                            {
+                                if ( is_array($operator_definition) && $operator_definition['class'] == $class_name )
+                                {
+                                    $operator_list = $operator_definition['operator_names'];
+                                    $found = true;
+                                    break;
+                                }
+                            }
+                            if (!$found)
+                            {
+                                $this->output_error('operatorList', 'The variable "eZTemplateOperatorArray" does not contains the operator_names for the class "'.$class_name.'".');
+                            }
+                        }
+                        else
+                        {
+                            $this->output_error('operatorList', 'The variable "eZTemplateOperatorArray" must be an array in the "'.$autoload_file.'" file.');
+                        }
+                    }
+                    else
+                    {
+                        $this->output_error('operatorList', 'There are no "eZTemplateOperatorArray" variable in the "'.$autoload_file.'" file.');
+                    }
                 }
+                else
+                {
+                    $this->output_error('operatorList', 'The file "'.$autoload_file.'" does not exist.');
+                }
+            }
+            else
+            {
+                $this->output_error('operatorList', 'The class "'.$class_name.'" is not registered in the autoload array.');
+            }
+            if (empty($operator_list))
+            {
+                $this->output_error('operatorList', 'There are no operators registered for the class "'.$class_name.'".');
             }
             $this->operator_list = $operator_list;
         }
