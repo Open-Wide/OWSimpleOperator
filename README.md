@@ -21,9 +21,13 @@ For installation instructions please read the doc/INSTALL.md
 The OWSimpleOperator provides also a lot of utils methods for your PHP code :
 
 * Call any PHP Function as a template operator
+
 * String manipulation
+
 * eZ Object Attribute Manipulation
+
 * Object type Control
+
 * Output manipulation
 
 
