@@ -1,2 +1,22 @@
+<?php /* #?ini charset="utf-8"?
+
 [OperatorExample]
 OperatorExampleAvailable[]=example_sum
+
+[OperatorPHP]
+OperatorExampleAvailable[]=phpfunctions
+
+# Names of system functions that
+# are usable as template operators
+
+[PHPFunctions]
+PermittedFunctionList[]
+PermittedFunctionList[]=time
+PermittedFunctionList[]=mktime
+PermittedFunctionList[]=getdate
+PermittedFunctionList[]=str_replace
+PermittedFunctionList[]=ereg_replace
+PermittedFunctionList[]=str_rot13
+PermittedFunctionList[]=file_get_contents
+
+*/ ?>
