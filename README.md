@@ -40,7 +40,7 @@ If you want to use a PHP Function as a template operator it must be enabled with
 # Copyright
    ------------
 
-OW Simple Operator is copyright 1999-2012 OPEN WIDE
+OW Simple Operator is copyright 1999-2012 OPEN WIDE and 1999-2012 Brookins Consulting
 
 See: doc/COPYRIGHT.md for more information on the terms of the copyright and license
 
@@ -77,28 +77,14 @@ Using OW Simple Operator under the terms of the GNU GPL is free (as in freedom).
 # Troubleshooting
    ------------
 
-* Remember template results are cached
-   ------------
+## Remember template results are cached
 
 Warning! Remember to use cache-block tags to ensure operator and function results are not cached incorrectly.
 
-See: http://doc.ez.no/eZ-Publish/Technical-manual/4.x/Reference/Template-functions/Miscellaneous/cache-block
+Please read doc/INSTALL.md for more detailed information and example solutions.
 
-From example template override: extension/exampleprojectdesign/design/exampleprojectdesign/override/templates/full/article.tpl
+## Read the doc/INSTALL.md
 
-{set-block scope=global variable=cache_ttl}0{/set-block}
+   Some problems are more common than others.
 
-<!-- snip -->
-
-{cache-block keys=currentdate()}
-<hr />
-{time()}
-<hr />
-{getdate()|attribute(show,1)}
-<hr />
-{/cache-block}
-
-   ------------
-
-* Read the doc/INSTALL.md
-   ------------
+   The most common ones are listed in the the doc/INSTALL.md
