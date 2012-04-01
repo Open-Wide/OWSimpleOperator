@@ -10,7 +10,7 @@ In this case, you can use OWSimpleOperator. You will save time and you will have
 This extension was made by [Open Wide](http://openwide.fr)
 
 
-Installation Instructions
+# Installation Instructions
    ------------
 
 Step 1 : Install
@@ -100,7 +100,7 @@ Or like that :
     {1|example_sum(2)}
 
 
-Cache
+# Cache
 -------
 
 Warning! Remember to use cache-block tags to ensure operator and function results are not cached incorrectly.
@@ -122,10 +122,10 @@ From example template override: extension/exampleprojectdesign/design/examplepro
 {/cache-block}
 
 
-Troubleshooting
+# Troubleshooting
 -------
 
-1. Remember template results are cached
+* Remember template results are cached
    ------------
 
 Warning! Remember to use cache-block tags to ensure operator and function results are not cached incorrectly.
@@ -147,7 +147,7 @@ From example template override: extension/exampleprojectdesign/design/examplepro
 {/cache-block}
 
 
-2. Read the README.md
+* Read the README.md
    ------------
 
    Some problems are more common than others.

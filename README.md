@@ -9,22 +9,43 @@ In this case, you can use OWSimpleOperator. You will save time and you will have
 
 This extension was made by [Open Wide](http://openwide.fr)
 
-
-Install
+# Install
    ------------
 
-1. RFor installation instructions please read the INSTALL.md
+For installation instructions please read the doc/INSTALL.md
 
 
-Copyright
+# Features
+   ------------
+
+The OWSimpleOperator provides also a lot of utils methods for your PHP code :
+
+* Call any PHP Function as a template operator
+* String manipulation
+* eZ Object Attribute Manipulation
+* Object type Control
+* Output manipulation
+
+
+# Constraints
+   ------------
+
+If an operator argument is optional, you have to set the default value to null.
+
+If you want more than 10 arguments for your operator, you have to override the $max_operator_parameter attribute.
+
+If you want to use a PHP Function as a template operator it must be enabled within owsimpleoperator.ini.append.php:[PHPFunctions] PermittedFunctionList[]
+
+
+# Copyright
    ------------
 
 OW Simple Operator is copyright 1999-2012 OPEN WIDE
 
-See: doc/COPYRIGHT for more information on the terms of the copyright and license
+See: doc/COPYRIGHT.md for more information on the terms of the copyright and license
 
 
-License
+# License
    ------------
 
 OW Simple Operator is licensed under the GNU General Public License.
@@ -53,32 +74,10 @@ along with OW Simple Operator in doc/LICENSE.  If not, see http://www.gnu.org/li
 Using OW Simple Operator under the terms of the GNU GPL is free (as in freedom).
 
 
-BONUS
+# Troubleshooting
    ------------
 
-The OWSimpleOperator provides also a lot of utils methods for your PHP code :
-
-* Call any PHP Function as a template operator
-* String manipulation
-* eZ Object Attribute Manipulation
-* Object type Control
-* Output manipulation
-
-
-CONSTRAINTS
-   ------------
-
-If an operator argument is optional, you have to set the default value to null.
-
-If you want more than 10 arguments for your operator, you have to override the $max_operator_parameter attribute.
-
-If you want to use a PHP Function as a template operator it must be enabled within owsimpleoperator.ini.append.php:[PHPFunctions] PermittedFunctionList[]
-
-
-Troubleshooting
-   ------------
-
-1. Remember template results are cached
+* Remember template results are cached
    ------------
 
 Warning! Remember to use cache-block tags to ensure operator and function results are not cached incorrectly.
@@ -99,6 +98,7 @@ From example template override: extension/exampleprojectdesign/design/examplepro
 <hr />
 {/cache-block}
 
+   ------------
 
-2. Read the INSTALL.md
+* Read the doc/INSTALL.md
    ------------
