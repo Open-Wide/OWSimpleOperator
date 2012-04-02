@@ -1,7 +1,7 @@
 OW Simple Operator README
 =====================
 
-Template operators of eZ Publish are really powerfull !
+Template operators of eZ Publish are really powerful!
 
 But sometimes you want to create some simples template operators, which don't need power.
 
@@ -18,7 +18,7 @@ For installation instructions please read the doc/INSTALL.md
 # Features
    ------------
 
-The OWSimpleOperator provides also a lot of utils methods for your PHP code :
+The OWSimpleOperator provides also a lot of utility methods for your PHP code :
 
 * Call any PHP Function as a template operator
 

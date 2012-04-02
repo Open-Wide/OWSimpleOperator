@@ -1,7 +1,7 @@
 OW Simple Operator INSTALL
 =====================
 
-Template operators of eZ Publish are really powerfull !
+Template operators of eZ Publish are really powerful!
 
 But sometimes you want to create some simples template operators, which don't need power.
 
