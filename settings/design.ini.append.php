@@ -1,2 +1,0 @@
-[ExtensionSettings]
-DesignExtensions[]=OWSimpleOperator

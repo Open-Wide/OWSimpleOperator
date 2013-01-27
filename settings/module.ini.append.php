@@ -1,2 +1,0 @@
-[ModuleSettings]
-ExtensionRepositories[]=OWSimpleOperator
