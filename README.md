@@ -45,7 +45,7 @@ If you want to use a PHP Class Method as a template operator it must be enabled 
 # Copyright
    ------------
 
-OW Simple Operator is copyright 2011 - 2012 OPEN WIDE and 1999 - 2012 Brookins Consulting
+OW Simple Operator is copyright 2011 - 2014 OPEN WIDE and 1999 - 2014 Brookins Consulting
 
 See: doc/COPYRIGHT.md for more information on the terms of the copyright and license
 
