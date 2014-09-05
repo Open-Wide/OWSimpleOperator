@@ -312,9 +312,9 @@ class OWSimpleOperator
 
             foreach( $named_parameters as $index => $parameter )
             {
-	       if( $parameter != "" )
+	       if( isset( $parameter ) )
                {
-                   $method_arguments = array_merge( array_values( $named_parameters[$index], $method_arguments ) );
+                   $method_arguments[$index] = $parameter;
                }
             }
             
