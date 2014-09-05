@@ -175,6 +175,26 @@ class OWSimpleOperator
         ezDebug::writeDebug( $this->output_method_name( $method_name, $arguments ) . $result );
     }
     /*!
+     * Log a debug method result
+     */
+    protected function output_debug_function_result( $method_name, $arguments, $result )
+    {
+        if ( is_array( $arguments ) )
+        {
+            $length = count( $arguments );
+            while ( $length > 0 && $arguments[ $length-1 ] == null )
+            {
+                $length--;
+            }
+            $arguments = array_slice( $arguments, 0, $length );
+        }
+        if ( $result !== null )
+        {
+            $result = ' => ' . $this->output_var( $result );
+        }
+        ezDebug::writeDebug( $this->output_function_name( $method_name, $arguments ) . $result );
+    }
+    /*!
      * Log a debug variable
      */
     protected function output_debug_value( $method_name, $name, $value )
@@ -195,6 +215,21 @@ class OWSimpleOperator
             $arguments = array( );
         }
         return get_class( $this ) . '->' . $method_name . '(' . implode( ', ', $arguments ) . ')';
+    }
+    /*!
+     * Get a readable version of a method name 
+     */
+    protected function output_function_name( $method_name, $arguments = null )
+    {
+        if ( is_array( $arguments ) )
+        {
+            $arguments = array_map( array( $this, 'output_var' ), $arguments );
+        }
+        else
+        {
+            $arguments = array( );
+        }
+        return 'PHP Function: ' . $method_name . '(' . implode( ', ', $arguments ) . ')';
     }
     /*!
      * Get a readable version of a variable value  
@@ -269,6 +304,34 @@ class OWSimpleOperator
             if ( $this->automatic_debug_output )
             {
                 $this->output_debug_method_result( $operator_name, $method_arguments, $operator_value );
+            }
+        }
+        elseif ( function_exists( $operator_name ) )
+        {
+	    $method_arguments = array();
+
+            foreach( $named_parameters as $index => $parameter )
+            {
+	       if( isset( $parameter ) )
+               {
+                   $method_arguments[$index] = $parameter;
+               }
+            }
+            
+            // If there are an operator value, we switch it with our parameter
+            if ( $operator_value !== null )
+            {
+                array_pop( $method_arguments );
+                array_unshift( $method_arguments, $operator_value );
+            }
+
+            // We call directly the operator method with all parameter
+            $method_call = $operator_name;
+            $operator_value = call_user_func_array( $method_call, $method_arguments );
+            
+            if ( $this->automatic_debug_output )
+            {
+                $this->output_debug_function_result( $operator_name, $method_arguments, $operator_value );
             }
         }
         else

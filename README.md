@@ -1,7 +1,7 @@
-OW Simple Operator
+OW Simple Operator README
 =====================
 
-Template operators of eZ Publish are really powerfull ! 
+Template operators of eZ Publish are really powerful!
 
 But sometimes you want to create some simples template operators, which don't need power.
 
@@ -9,89 +9,86 @@ In this case, you can use OWSimpleOperator. You will save time and you will have
 
 This extension was made by [Open Wide](http://openwide.fr)
 
+# Install
+   ------------
 
-Step 1 : Install
--------
-Add the OWSimpleOperator extension to your project.
-
-This extension will provide to you the "OWSimpleOperator" class.
-So you have to regenerate the extension autoloads.
+For installation instructions please read the doc/INSTALL.md
 
 
-Step 2 : Template Operators Class 
--------
-In your own extension, create a template operators class in the following path :
+# Features
+   ------------
 
-    /extension/myextension/autoloads/mytemplateoperator.php
+The OWSimpleOperator provides also a lot of utility methods for your PHP code :
 
-It must extends the OWSimpleOperator :
-
-    class ExampleOperator extends OWSimpleOperator
-    {
-    }
-
-
-Step 3 : Code your operator
--------
-Add the implementation of your operator.
-For example for a sum operator :
-
-    class ExampleOperator extends OWSimpleOperator
-    {
-        /*!
-         * Return the sum of two numbers
-         */
-        public function example_sum( $number1, $number2 )
-        {
-            return ( $number1 + $number2 );
-        }
-    }
-
-
-Step 4 : Register your operator
--------
-Register your operator in the eztemplateautoload.php file :
-
-    /extension/myextension/autoloads/eztemplateautoload.php
-
-The content of this file have to look like that :
-
-    $eZTemplateOperatorArray = array(
-         array(
-            'script' => 'extension/owsimpleoperator/autoloads/exampleoperator.php',
-            'class' => 'ExampleOperator',
-            'operator_names' => array(
-                'example_sum' ,
-            )
-         )
-    );
-    
-
-Step 5 : Use it in your template
--------
-You already can use it in your template.
-
-Like that :
-
-    {example_sum(1, 2)}
-    
-Or like that :
-
-    {1|example_sum(2)}
-    
-    
-Bonus
--------
-The OWSimpleOperator provides also a lot of utils methods for your PHP code :
+* Call any PHP Function as a template operator
 
 * String manipulation
+
 * eZ Object Attribute Manipulation
+
 * Object type Control
-* Output manipulation 
+
+* Output manipulation
 
 
-Contraints
--------
+# Constraints
+   ------------
+
 If an operator argument is optional, you have to set the default value to null.
 
 If you want more than 10 arguments for your operator, you have to override the $max_operator_parameter attribute.
+
+If you want to use a PHP Function as a template operator it must be enabled within owsimpleoperator.ini.append.php:[PHPFunctions] PermittedFunctionList[]
+
+
+# Copyright
+   ------------
+
+OW Simple Operator is copyright 1999-2012 OPEN WIDE and 1999-2012 Brookins Consulting
+
+See: doc/COPYRIGHT.md for more information on the terms of the copyright and license
+
+
+# License
+   ------------
+
+OW Simple Operator is licensed under the GNU General Public License.
+
+The complete license agreement is included in the doc/LICENSE file.
+
+OW Simple Operator is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+OW Simple Operator is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+The GNU GPL gives you the right to use, modify and redistribute
+OW Simple Operator under certain conditions. The GNU GPL license
+is distributed with the software, see the file doc/LICENSE.
+
+It is also available at http://www.gnu.org/licenses/gpl.txt
+
+You should have received a copy of the GNU General Public License
+along with OW Simple Operator in doc/LICENSE.  If not, see http://www.gnu.org/licenses/.
+
+Using OW Simple Operator under the terms of the GNU GPL is free (as in freedom).
+
+
+# Troubleshooting
+   ------------
+
+## Remember template results are cached
+
+Warning! Remember to use cache-block tags to ensure operator and function results are not cached incorrectly.
+
+Please read doc/INSTALL.md for more detailed information and example solutions.
+
+## Read the doc/INSTALL.md
+
+   Some problems are more common than others.
+
+   The most common ones are listed in the the doc/INSTALL.md
