@@ -38,10 +38,4 @@ foreach( $classMethods as $className => $classParameters )
       $eZTemplateOperatorArray[] = array( 'script' => $classFileName, 'class' => $className, 'operator_names' => $classMethods );
 }
 
-array_push( $eZTemplateOperatorArray, array(
-        'script' => 'extension/owsimpleoperator/autoloads/phpfunctionoperator.php',
-        'class' => 'PHPFunctionOperator',
-        'operator_names' => eZINI::instance('owsimpleoperator.ini')->variable( 'PHPFunctions', 'PermittedFunctionList' )
-        ) );
-
 ?>

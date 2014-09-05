@@ -1,5 +1,5 @@
-Copyright © 2011 - 2012, OPEN WIDE
-Copyright © 1999 - 2012, Brookins Consulting
+Copyright © 2011 - 2014, OPEN WIDE
+Copyright © 1999 - 2014, Brookins Consulting
 
     This file is part of OW Simple Operator.
 

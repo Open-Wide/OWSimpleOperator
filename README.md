@@ -40,11 +40,12 @@ If you want more than 10 arguments for your operator, you have to override the $
 
 If you want to use a PHP Function as a template operator it must be enabled within owsimpleoperator.ini.append.php:[PHPFunctions] PermittedFunctionList[]
 
+If you want to use a PHP Class Method as a template operator it must be enabled within owsimpleoperator.ini.append.php:[ClassOperators] PermittedClassOperatorList[]
 
 # Copyright
    ------------
 
-OW Simple Operator is copyright 1999-2012 OPEN WIDE and 1999-2012 Brookins Consulting
+OW Simple Operator is copyright 2011 - 2014 OPEN WIDE and 1999 - 2014 Brookins Consulting
 
 See: doc/COPYRIGHT.md for more information on the terms of the copyright and license
 
