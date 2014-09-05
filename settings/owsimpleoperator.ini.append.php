@@ -13,4 +13,11 @@ PermittedFunctionList[]=ereg_replace
 PermittedFunctionList[]=str_rot13
 PermittedFunctionList[]=file_get_contents
 
+# Class file path, Class Name, Class Method
+# that are useable as template operators
+
+[ClassOperators]
+PermittedClassOperatorList[]
+PermittedClassOperatorList[]=extension/owsimpleoperator/autoloads/exampleoperator.php;ExampleOperator;example_sum
+
 */ ?>
