@@ -18,7 +18,10 @@ Step 1 : Install
 Add the OWSimpleOperator extension to your project.
 
 This extension will provide to you the "OWSimpleOperator" class.
+
 So you have to regenerate the extension autoloads.
+
+php ./bin/php/ezpgenerateautoloads.php;
 
 
 Step 2 : Template Operators Class
@@ -37,6 +40,7 @@ It must extends the OWSimpleOperator :
 Step 3 : Code your operator
 -------
 Add the implementation of your operator.
+
 For example for a sum operator :
 
     class ExampleOperator extends OWSimpleOperator
@@ -53,21 +57,17 @@ For example for a sum operator :
 
 Step 4 : Register your operator or function
 -------
-Register your operator in the eztemplateautoload.php file :
+Register your operator in a settings override of owsimpleoperator.ini.append.php file :
 
-    /extension/myextension/autoloads/eztemplateautoload.php
+    /settings/override/owsimpleoperator.ini.append.php
 
 The content of this file have to look like that :
 
-    $eZTemplateOperatorArray = array(
-         array(
-            'script' => 'extension/owsimpleoperator/autoloads/exampleoperator.php',
-            'class' => 'ExampleOperator',
-            'operator_names' => array(
-                'example_sum' ,
-            )
-         )
-    );
+[ClassOperators]
+PermittedClassOperatorList[]
+PermittedClassOperatorList[]=extension/custom-extension-name/classes/anohterexampleoperatorclass.php;AnotherExampleOperator;example_sub
+
+Note that the class file path, class name and class method to use are all ini settings based.
 
 
 PHP Functions must be enabled via settings
@@ -98,6 +98,10 @@ Like that :
 Or like that :
 
     {1|example_sum(2)}
+
+Or like this :
+
+    {def $output = str_replace('great','very good','This is a great example!')}
 
 
 # Cache
