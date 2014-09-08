@@ -364,7 +364,8 @@ class OWSimpleOperator
             
             // We will search the template operator in the eztemplateautoload.php
             $class_name = get_class( $this );
-            $folder_path = OWEzpAutoloader::get_class_folder_path( $class_name );
+            $parent_class_name = get_parent_class( $this );
+            $folder_path = OWEzpAutoloader::get_class_folder_path( $parent_class_name );
             if ( !empty( $folder_path ) )
             {
                 $autoload_file = $folder_path . '/eztemplateautoload.php';
