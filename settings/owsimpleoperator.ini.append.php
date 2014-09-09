@@ -18,6 +18,6 @@ PermittedFunctionList[]=file_get_contents
 
 [ClassOperators]
 PermittedClassOperatorList[]
-PermittedClassOperatorList[]=extension/owsimpleoperator/autoloads/exampleoperator.php;ExampleOperator;example_sum
+#PermittedClassOperatorList[]=extension/owsimpleoperator/autoloads/exampleoperator.php;ExampleOperator;example_sum
 
-*/ ?>
+*/
