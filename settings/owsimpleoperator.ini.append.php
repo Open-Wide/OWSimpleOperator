@@ -1,5 +1,9 @@
 <?php /* #?ini charset="utf-8"?
 
+[OWSimpleOperatorSettings]
+# Display Function Call and Results via ezDebug:writeDebug
+DebugOutput=enabled
+
 # Names of system functions that
 # are usable as template operators
 
