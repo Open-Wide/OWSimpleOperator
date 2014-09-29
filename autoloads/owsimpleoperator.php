@@ -22,9 +22,20 @@ class OWSimpleOperator
 {
     
     public $max_operator_parameter = 10;
-    public $automatic_debug_output = true;
+    public $automatic_debug_output = false;
     public $operator_list;
     
+
+    /*!
+     * Constructor : Disable or enable automatic debug output based on ini settings
+     */
+    function __construct()
+    {
+        if( ( eZINI::instance( 'owsimpleoperator.ini' )->variable( 'OWSimpleOperatorSettings', 'DebugOutput' ) == 'enabled' ) )
+        {
+            $this->automatic_debug_output = true;
+        }
+    }
 
     /*********************************************************************
      UTILS : STRING MANIPULATION
